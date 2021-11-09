@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no"> 
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/cadastro.css">
+        <script src="js/jquery.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <title> Pagina de Recuperação</title>
+    </head>
+        <body>
+         <div class="container">
+            <div class="login">
+                <h1> Cadastro </h1>
+                <div class="digito">
+                        <input type="text" maxlength="20" placeholder="Nome de Usuário"><br>
+                        <input type="text" maxlength="70" placeholder="Email"><br>
+                        <input type="password" id="pass" onKeyPress="Verifica()" maxlength="20" placeholder="Senha"><br>
+                        <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho" class="olho">
+                        <input type="password" id="pass-2" maxlength="20" onKeyPress="Verifica()" placeholder="Confirmar senha"><br>
+                        <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho-2" class="olho-2">
+                        
+                        <div class="checkbox">
+                            <input type="checkbox" placeholder=""> <p>Eu aceito os <a href=''>Termos e Condições</a> </p></input>
+                        </div>
+                    </div>
+                
+
+                <div class="entrar">
+                    <button>Confirmar</button>
+                </div>
+               <div class="cadastrado"> 
+               <a href='index.html'> Já sou cadastrado</a>
+            </div>
+            </div>  
+         </div> 
+    </body>\\
+    <script type="text/javascript">
+    function Verifica(){
+        val1=document.getElementById("pass").value;
+        val2=document.getElementById("pass-2").value;
+    
+        if(val1!=val2){
+        
+            document.getElementById("pass").style.borderBottomColor="rgb(10, 14, 17) 1px solid;";
+            document.getElementById("pass-2").style.borderBottomColor="rgb(10, 14, 17) 1px solid;";
+        }else{
+            document.getElementById("pass").style.borderBottom="#000";
+            document.getElementById("pass-2").style.borderBottom="#000";
+        }
+    }
+
+   </script>
+
+    <script type="text/javascript">
+        let input = document.getElementById('pass'),
+        img = document.getElementById('olho');
+        
+        img.addEventListener('click', function() {
+          if (input.type == 'password') {
+              input.type = 'text';
+              this.style.opacity = "1"
+          } else{
+              input.type = "password";
+              this.style.opacity = ".3"
+          } 
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        let input2 = document.getElementById('pass-2'),
+        img2 = document.getElementById('olho-2');
+            
+        img2.addEventListener('click', function() {
+            if (input2.type == 'password') {
+                input2.type = 'text';
+                this.style.opacity = "1"
+              } else{
+                input2.type = "password";
+                this.style.opacity = ".3"
+              } 
+            });
+            </script>
+</html>

@@ -1,0 +1,156 @@
+body{ 
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-attachment: fixed;
+    background-image: url(https://i.imgur.com/Qpf8NEY.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    display: block;
+    margin: 65px;
+}
+.login h1{
+    border: black;
+    text-align: center;
+}
+.container { 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 20px;
+}
+.login{ 
+    background-color: #2b3e4c;
+    margin-top: 30px;
+    width: 360px;
+    height: 460px;
+    padding: 40px 15px;
+    padding-top: 15px;
+    border-radius: 3%;
+    box-shadow: 6px 3px 1px 0px rgba(215, 242, 255, 0.753);
+}
+.digito{ 
+    position: relative;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+
+.entrar button{ 
+    background: rgba(105, 248, 148, 0.753);;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    width: 95%;
+    border-radius: 10px;
+}
+.cadastrar button {
+    background: rgba(43, 87, 207, 0.753);;
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    width: 95%;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: rgb(124, 196, 255);
+    cursor: pointer;
+}
+.btn{ 
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 45px;
+    background-color: transparent;
+    border: none;
+    transition: .2s;
+}
+input{ 
+    width: 51px;
+    height: 46px;
+    display: inline-block;
+    border: 0;
+    max-width: 10px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: transparent;
+    outline: none;
+    min-width: 300px;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    border-radius: 0;
+}
+
+input:not(:placeholder-shown){
+    border-bottom: rgb(124, 196, 255) 1px solid;
+}
+
+input:not(:placeholder-shown) + label{
+    transform: translateY(-14px) scale(.8);
+}
+
+.digito > * {
+    height: 2.5em;
+    float: left;
+}
+
+.alternativo  {
+    flex-grow: 1;
+  
+}
+.alternativo h3{ 
+    margin-top: -12px;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    background-size: 300px 100px ;
+    background-color: 2b3e4c;
+    text-align: center;
+    display: block;
+    padding: 8px 25px;
+
+}
+.alternativo img{
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content: flex-end;
+}
+
+
+.digito img {
+    cursor: pointer;
+    width: 37px;
+    margin-top: -38px;
+    margin-left: 260px;
+    opacity: .3;
+}
+
+.ajuda{
+  margin-top: 6px;
+  margin-left: 2px;
+  text-align: center;
+  font-size: 14.5px;
+ }
+ 
+.icones{
+    flex-flow: row nowrap;
+}
+
+.espaço{
+    max-width: 360px;
+	margin: 0 auto;
+	display: flex;
+}
+.icon{
+    flex: 1;
+	margin: -64px;
+	text-align: center;
+}
+
