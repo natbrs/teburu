@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+    <html lang="br">
+    <head>
+        <!-- Alteração de Estilo do Menu Inicial -->
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <!-- Implementações JS, PLUGINS e ETC --> 
+        <script src="js/jquery.js"></script>
+        <script src="./../cordova.js"></script>
+        <script src="js/index.js"></script>
+        <!-- Título da Página -->
+        <title>Menu Principal</title>
+    </head>
+    <body>
+        <!-- Barra de Navegação -->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <img src="img/icon-teburo.png" class="nav__logo"></img>
+                   <div class="nav__menu" id="nav-menu">
+                       <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="#jogos" class="nav__link active-link">
+                                    <i class='bx bxs-joystick nav__icon'></i>
+                                    <span class="nav__name">Jogos</span>
+                                </a>
+                            </li>
+                            <li class="nav__item">
+                            <a href="#loja" class="nav__link">
+                                    <i class='bx bxs-store nav__icon'></i>
+                                <span class="nav__name__loja">Loja</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#perfil" class="nav__link">
+                                   <i class='bx bxs-user-circle nav__icon'></i>
+                                    <span class="nav__name__perfil">Perfil</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#historico" class="nav__link">
+                                 <i class='bx bxs-notepad nav__icon'></i>
+                                 <span class="nav__name__historico">Histórico</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#config" class="nav__link">
+                                <i class='bx bx-cog nav__icon'></i>
+                                <span class="nav__name__config">Config</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Foto de perfil flutuante -->
+                <img src="img/perfil.png" alt="" class="nav__img" width="30px">
+            </nav>
+        </header>
+            <!-- Páginas do Menu Principal -->
+            <section class="section section__height" id="jogos">
+                <!-- Menu Jogos -->
+                <h2 class="section__title">Jogos</h2>
+                <div class="boxes">
+                    <div class="box">
+                            
+                        <div class="miniatura">     
+                            <button onclick="window.location.href='tebjogo/index.html'" id="tebgame">                                       
+                                <img src="img/ThumbJogo.png" width="120px">  
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="miniatura">
+                            <label for=""></label>
+                           <img src="img/ThumbNOTeburo.png" width="120px">  
+                       </div>
+                   </div>
+                   <div class="box">
+                    <div class="miniatura">
+                        <label for=""></label>
+                        <img src="img/ThumbNOTeburo.png" width="120px">  
+                   </div>
+                   </div>
+                   <div class="box">
+                   <div class="miniatura">
+                       <label for=""></label>
+                       <img src="img/ThumbNOTeburo.png" width="120px">  
+                   </div>
+                   </div>
+                   <div class="box">
+                    <div class="miniatura">
+                        <label for=""></label>
+                        <img src="img/ThumbNOTeburo.png" width="120px">  
+                    </div>
+                    </div>
+                     <div class="box">
+                   <div class="miniatura">
+                       <label for=""></label>
+                       <img src="img/ThumbNOTeburo.png" width="120px">  
+                   </div>
+                   </div>
+                </div>
+            </div>
+            </section>
+            <section class="section section__height" id="loja">
+                <!-- Menu Loja -->
+                <h2 class="section__title">Loja</h2>
+                <div class="carteira">
+                    <div class="carteira__money">
+                      <img src="img/coin.png" class="img__money" width="55px">
+                      <button class="button__money" onclick="comprarMoeda()">+</button><p class="moeda">15 </p>
+                    </div>
+                    <div class="carteira__dima">
+                    <img src="img/dima.png" class="img__dima" width="40px">
+                    <button class="button__dima" onclick="comprarDiamante()">+</button><p class="dima">15 </p>
+                   </div>
+                </div>
+               <div class="anuncios">
+                    <div class="box__anuncio">
+                        <img src="img/anuncio1.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio2.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio3.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+                    <div class="box__anuncio">
+                        <img src="img/anuncio4.png" alt="">
+                        <button>Comprar</button>
+                    </div>
+        
+               </div>
+            </section>
+            <section class="section section__height" id="perfil">
+                <!-- Menu Perfil -->
+                <h2 class="section__title">Perfil</h2>
+                <div class="container mt-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-7">
+                            <div class="card p-3 py-4">
+                                <div class="text-center"> <img src="img/perfil.png" width="100" class="rounded-circle"> </div>
+                                <div class="text-center mt-3"> 
+                                    <h5  id="email"></h5> 
+                                    <span class="bg-secondary p-1 px-4 rounded text-white">Nível: 1</span>
+                                    <div class="px-4 mt-1">
+                                        <p class="fonts"> Esse usuário ainda não adicionou uma biografia em seu perfil.</p>
+                                    </div>
+                                   
+                                    <div class="buttons"><button class="btn btn-primary px-4 ms-3">Editar Perfil</button> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="linha"></div>
+                <div class="pl-4 pb-3">
+                    <h6 class="mb-0">Conquistas</h6>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">Em breve...</p>  
+                        </div>
+                    </div> 
+            </section> 
+            <section class="section section__height" id="historico">
+                <!-- Menu Histórico -->
+                <h2 class="section__title">Histórico</h2>
+            </section>
+            <section class="section section__height" id="config">
+                <!-- Menu Configurações -->
+                <h2 class="section__title">Configurações</h2>
+                    <div class="h-screen bg-blue-300 flex justify-center items-center">
+                        <div class="container mx-auto">
+                            <div class="max-w-sm mx-auto md:max-w-lg">
+                                <div class="w-full">
+                                    <ul class="px-0">
+                                        <a href="#info" class="nav__link">
+                                        <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600" style='border-bottom-width:0'>Informações Pessoais</li>
+                                        </a> 
+                                        <div class="linha"></div>
+                                        <a href="#info" class="nav__link">
+                                        <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600" style='border-bottom-width:0'>Termos e Condições</li>
+                                        </a>    
+                                        <div class="linha"></div>
+                                        <a href="#info" class="nav__link">
+                                        <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600" style='border-bottom-width:0'>Idioma e Região</li>
+                                        </a>    
+                                        <div class="linha"></div>
+                                        <a href="#info" class="nav__link">
+                                        <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600" style='border-bottom-width:0'>Segurança</li>
+                                        </a>    
+                                        <div class="linha"></div>
+                                        <a href="index.html" class="nav__link" >
+                                        <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600" style='border-bottom-width:0'>Sair</li>
+                                        </a>
+                                        <div class="linha"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <section class="info__style" id="info">
+                <div class="">
+                    <div class="">
+                        <div class="">
+                            <h5 class="card-title">Informações Pessoais</h5>
+                            <p>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">Email</label>
+                                        <input type="" class="" id="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Senha</label>
+                                        <input type="" class="" id="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Observação</label>
+                                        <input type="" class="" id="">
+                                    </div>
+                                    <button type="button" id="btnInserir" class="btn btn-primary">Atualizar</button>
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+            <section class="section section height" id=""></section>
+            <section class="section section height" id=""></section>
+            <section class="section section height" id="">
+            </section>
+            <script src="js/main.js"></script>
+            <script src="js/authLogin.js"></script>
+            <script src="js/authCadastro.js"></script>
+            <!-- Firebase Plugins --> 
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    </body>
+    <!-- Firebase Config -->
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyC-BnCbDt7NnxI9JXcetHpPBJhZVAdgp6s",
+            authDomain: "appteburu-db.firebaseapp.com",
+            projectId: "appteburu-db",
+            storageBucket: "appteburu-db.appspot.com",
+            messagingSenderId: "439242193658",
+            appId: "1:439242193658:web:817e85bc1ee4a99953e743",
+            measurementId: "G-5KJ281W2C2"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+</html>

@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Alteração de Estilo da Página Inicial -->
         <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no"> 
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/cadastro.css">
+        <!-- Implementações CSS, JS, PLUGINS e ETC -->
         <script src="js/jquery.js"></script>
-        <script src="cordova.js"></script>
+        <script src="./../cordova.js"></script>
         <script src="js/index.js"></script>
+        <!-- Título da Página -->
         <title> Pagina de Cadastro</title>
-    </head>
-        <body>
-         <div class="container">
-            <div class="login">
-                <h1> Cadastro </h1>
-                <div class="digito">
-                        <input type="text" maxlength="20" placeholder="Nome de Usuário"><br>
-                        <input type="text" maxlength="70" placeholder="Email"><br>
-                        <input type="password" id="pass" maxlength="20" placeholder="Senha"><br>
-                        <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho" class="olho">
-                        <input type="password" id="pass-2" maxlength="20" placeholder="Confirmar senha"><br>
-                        <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho-2" class="olho-2">
-                        
-                        <div class="checkbox">
-                            <input type="checkbox" placeholder=""> <p>Eu aceito os <a href=''>Termos e Condições</a> </p></input>
+        </head>
+            <body>
+                <!-- Telas de Cadastro -->
+                <div class="container">
+                    <div class="login">
+                        <h1> Cadastro </h1>
+                            <div class="digito">
+                                <input type="text" maxlength="20" placeholder="Nome de Usuário" id="nick"> <br>
+                                <input type="text" maxlength="70" placeholder="Email" id="email"><br>
+                                <input type="password" id="pass" maxlength="20" placeholder="Senha"><br>
+                                <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho" class="olho">
+                               
+                            <div class="checkbox">
+                                <input  type="checkbox"><p>Eu aceito os <a href=''>Termos e Condições</a></p></input>
+                            </div>
                         </div>
-                    </div>
-                
-
-                <div class="entrar">
-                    <button type="submit" onclick="return validarSenha()">Confirmar</button>
+                        <div class="entrar">
+                            <button  type="button" onclick="cadastro()">Confirmar</button>
+                        </div>
+                        <div class="cadastrado"> 
+                            <a href='index.html'>Já sou cadastrado</a>
+                        </div>
+                    </div>  
                 </div>
-               <div class="cadastrado"> 
-               <a href='index.html'> Já sou cadastrado</a>
-            </div>
-            </div>  
-         </div> 
-    </body>
-    <script type="text/javascript">
-        let input = document.getElementById('pass'),
-        img = document.getElementById('olho');
+                <script src="js/main.js"></script>
+                <script src="js/authCadastro.js"></script>          
+                <!-- Firebase Plugins --> 
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+            </body>
+            <!-- Firebase Config -->
+            <script>
+                var firebaseConfig = {
+                    apiKey: "AIzaSyC-BnCbDt7NnxI9JXcetHpPBJhZVAdgp6s",
+                    authDomain: "appteburu-db.firebaseapp.com",
+                    projectId: "appteburu-db",
+                    storageBucket: "appteburu-db.appspot.com",
+                    messagingSenderId: "439242193658",
+                    appId: "1:439242193658:web:817e85bc1ee4a99953e743",
+                    measurementId: "G-5KJ281W2C2"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                firebase.analytics();
+            </script>  
+            <!-- Script Esconder/Revelar Senha - Input 1 -->
+            <script type="text/javascript">
+                let input = document.getElementById('pass'),
+                img = document.getElementById('olho');
         
-        img.addEventListener('click', function() {
-          if (input.type == 'password') {
-              input.type = 'text';
-              this.style.opacity = "1"
-          } else{
-              input.type = "password";
-              this.style.opacity = ".3"
-          } 
-        });
-        </script>
-    <script type="text/javascript">
-        let input2 = document.getElementById('pass-2'),
-        img2 = document.getElementById('olho-2');
-            
-        img2.addEventListener('click', function() {
-            if (input2.type == 'password') {
-                input2.type = 'text';
-                this.style.opacity = "1"
-              } else{
-                input2.type = "password";
-                this.style.opacity = ".3"
-              } 
-            });
+                img.addEventListener('click', function(){
+                    if (input.type == 'password') {
+                        input.type = 'text';
+                        this.style.opacity = "1"
+                    }else{
+                        input.type = "password";
+                        this.style.opacity = ".3"
+                    } 
+                });
             </script>
 </html>
