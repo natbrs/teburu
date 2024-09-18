@@ -1,82 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- Alteração de Estilo da Página Inicial -->
-        <meta charset="utf-8">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no"> 
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/cadastro.css">
-        <!-- Implementações CSS, JS, PLUGINS e ETC -->
-        <script src="js/jquery.js"></script>
-        <script src="./../cordova.js"></script>
-        <script src="js/index.js"></script>
-        <!-- Título da Página -->
-        <title> Pagina de Cadastro</title>
-        </head>
-            <body>
-                <!-- Telas de Cadastro -->
-                <div class="container">
-                    <div class="login">
-                        <h1> Cadastro </h1>
-                            <div class="digito">
-                                <input type="text" maxlength="20" placeholder="Nome de Usuário" id="nick"> <br>
-                                <input type="text" maxlength="70" placeholder="Email" id="email"><br>
-                                <input type="password" id="pass" maxlength="20" placeholder="Senha"><br>
-                                <img src="http://i.stack.imgur.com/H9Sb2.png" id="olho" class="olho">
-                               
-                            <div class="checkbox">
-                                <input  type="checkbox"><p>Eu aceito os <a href=''>Termos e Condições</a></p></input>
-                            </div>
-                        </div>
-                        <div class="entrar">
-                            <button  type="button" onclick="cadastro()">Confirmar</button>
-                        </div>
-                        <div class="cadastrado"> 
-                            <a href='index.html'>Já sou cadastrado</a>
-                        </div>
-                    </div>  
-                </div>
-                <script src="js/main.js"></script>
-                <script src="js/authCadastro.js"></script>          
-                <!-- Firebase Plugins --> 
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-            </body>
-            <!-- Firebase Config -->
-            <script>
-                var firebaseConfig = {
-                    apiKey: "AIzaSyC-BnCbDt7NnxI9JXcetHpPBJhZVAdgp6s",
-                    authDomain: "appteburu-db.firebaseapp.com",
-                    projectId: "appteburu-db",
-                    storageBucket: "appteburu-db.appspot.com",
-                    messagingSenderId: "439242193658",
-                    appId: "1:439242193658:web:817e85bc1ee4a99953e743",
-                    measurementId: "G-5KJ281W2C2"
-                };
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
-                firebase.analytics();
-            </script>  
-            <!-- Script Esconder/Revelar Senha - Input 1 -->
-            <script type="text/javascript">
-                let input = document.getElementById('pass'),
-                img = document.getElementById('olho');
-        
-                img.addEventListener('click', function(){
-                    if (input.type == 'password') {
-                        input.type = 'text';
-                        this.style.opacity = "1"
-                    }else{
-                        input.type = "password";
-                        this.style.opacity = ".3"
-                    } 
-                });
-            </script>
+<head>
+    <!-- Alteração de Estilo da Página de Cadastro -->
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/estilo.css">
+    <!-- Implementações JS, PLUGINS & etc -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/index.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- Título da Página -->
+    <title>tebCadastro</title>
+    <!-- Importações Libs, Components & etc -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Telas de Cadastro -->
+    <div class="container">
+        <div class="login">
+            <center><img src="img/icon-teburo.png" height="120px" class="logo" id="logo"></center>
+            <h1>Cadastro</h1>
+            <div class="digito">
+                <input type="text" maxlength="20" placeholder="Nome de Usuário" id="nick" required><br>
+                <input type="email" maxlength="70" placeholder="Email" id="email" required><br>
+                <div class="password-container">
+                    <input type="password" id="pass" maxlength="20" placeholder="Senha" required>
+                    <i id="olho" class="fa-solid fa-eye"></i>
+                </div>
+                <div class="password-container">
+                    <input type="password" id="pass-confirm" maxlength="20" placeholder="Confirmar Senha" required>
+                    <i id="olho-confirm" class="fa-solid fa-eye"></i>
+                </div>
+            </div>
+            <button class="loginBtn" type="button" id="confirmar" style="background: rgb(148, 92, 74);">
+                Confirmar
+            </button>
+            <div id="registerMessage" class="login-message"></div>
+            <p class="ajuda">
+                <a href='index.html'>Já sou cadastrado</a>
+            </p>
+        </div>
+    </div>
+    <!-- Firebase Plugins -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <!-- Implementações Scripts Externos -->
+    <script src="js/main.js"></script>
+    <script src="js/togglePass.js"></script>
+    <script type="module" src="js/register.js"></script>
+</body>
+
 </html>

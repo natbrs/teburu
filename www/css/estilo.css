@@ -1,147 +1,333 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
 }
-body{ 
-    overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
-    background-attachment: fixed;
-    background-image: linear-gradient(45deg,#A8603E,#FFB491, #F59D74);
-    background-size: cover;
+
+body {
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(
+    45deg,
+    #ca744c,
+    #f89d73,
+    #e68c62,
+    #f1956a,
+    #e88658
+  );
+  background-size: 500% 500%;
+  animation: gradientAnimation 15s ease infinite;
 }
+
 html {
-    overflow: hidden;
-  
+  overflow: hidden;
 }
 
-.container { 
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    padding: 20px 10px;
-}
-.login{ 
-    margin-top: 12px;
-    width: 360px;
-    height: 460px;
-    padding: 40px 15px;
-    padding-top: 15px;
-    border-radius: 3%;
-}
-.digito{ 
-    position: relative;
-    padding: 10px 10px;
-    margin-bottom: 20px;
-}
-
-.entrar button{ 
-    background: rgb(148, 92, 74);
-    margin-top: 20px;
-    padding: 17px;
-    border: none;
-    width: 98%;
-    border-radius: 10px;
-}
-.cadastrar button {
-    background: rgb(255, 145, 108);
-    margin-top: 10px;
-    padding: 15px;
-    border: none;
-    width: 98%;
-    border-radius: 10px;
-}
-
-button:hover{
-    background-color: rgb(124, 196, 255);
-    cursor: pointer;
-}
-.btn{ 
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    margin-left: 45px;
-    background-color: transparent;
-    border: none;
-    transition: .2s;
-}
-input{ 
-    width: 51px;
-    height: 46px;
-    display: inline-block;
-    border: 0;
-    max-width: 10px;
-    border-bottom: 1px solid rgb(255, 255, 255);
-    background-color: transparent;
-    outline: none;
-    min-width: 300px;
-    font-size: 16px;
-    transition: all .3s ease-out;
-    border-radius: 0;
-}
-input::placeholder{ 
-    color: rgb(148, 92, 74);
-}
-input:not(:placeholder-shown){
-    border-bottom: rgb(148, 92, 74) 1px solid;
-}
-input:not(:placeholder-shown) + label{
-    transform: translateY(-14px) scale(.8);
-}
-.digito > * {
-    height: 2.5em;
-    float: left;
-}
-.alternativo  {
-    flex-grow: 1;
-  
-}
- h3{ 
-    margin-top:4px;
-    font-weight: 600;
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    background-size: 300px 100px ;
-    background-color: 2b3e4c;
-    text-align: center;
-    display: block;
-    padding: 8px 25px;
-
-}
-.digito img {
-    cursor: pointer;
-    width: 37px;
-    margin-top: -38px;
-    margin-left: 260px;
-    opacity: .3;
-}
-.ajuda{
-  margin-top: 6px;
-  margin-left: 2px;
+h1 {
   text-align: center;
+  margin-top: -20px;
+  font-size: 24px;
+  color: rgb(108, 69, 55);
+}
 
-  color:rgb(255, 145, 108);
-  font-weight: bold;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 15px;
+}
+
+.login {
+  width: 100%;
+  max-width: 360px;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.login img {
+  margin-bottom: 30px;
+}
+
+.digito {
+  display: block;
+  position: relative;
+  padding: 10px 10px;
+  bottom: -5px;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid rgb(131, 68, 47);
+  border-radius: 20px;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: rgb(105, 49, 30);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 0.3s,
+    transform 0.1s,
+    box-shadow 0.3s;
+}
+
+.loginBtn:hover {
+  filter: brightness(0.85);
   cursor: pointer;
- }
-.ajuda a{ 
-    text-decoration: none;
-    color:rgb(241, 237, 235);
-    font-size: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-.icones{
-    flex-flow: row nowrap;
+
+.loginBtn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-.espaço{
-    max-width: 360px;
-	margin: 1 auto;
-	display: flex;
+
+.login-message i {
+  margin-right: 10px;
 }
-.icon{
-    flex: 1;
-	margin-top: -15px;
-	text-align: center;
+
+input {
+  width: 100%;
+  height: 46px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 1.5px solid rgb(148, 92, 74);
+  border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+  transition: all 0.3s ease-out;
+  border-radius: 0;
+  font-size: 16px;
+  transition:
+    font-size 0.3s ease,
+    transform 0.3s ease;
 }
-.tebgame{
-    border-bottom: none;
+
+input::placeholder {
+  color: rgb(148, 92, 74);
+}
+
+input:not(:placeholder-shown) {
+  border-bottom: rgb(131, 68, 47) 1.5px solid;
+}
+
+input:not(:placeholder-shown) + label {
+  transform: translateY(-14px) scale(0.8);
+}
+
+input:focus {
+  color: rgb(148, 92, 74);
+  font-size: 18px;
+  transform: scale(1.05);
+}
+
+input:not(:placeholder-shown) {
+  color: rgb(148, 92, 74);
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 30px;
+  font-size: 16px;
+  transition:
+    font-size 0.3s ease,
+    transform 0.3s ease;
+}
+
+.password-container input:focus {
+  font-size: 18px;
+  transform: scale(1.05);
+}
+
+.password-container i {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(148, 92, 74);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.password-container input:focus + i,
+.password-container input:not(:placeholder-shown) + i {
+  opacity: 1;
+}
+
+.ajuda {
+  text-align: center;
+  color: rgb(255, 221, 210);
+  font-weight: bold;
+}
+
+.ajuda a {
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.ajuda a {
+  text-decoration: none;
+  font-size: 13.5px;
+  position: relative;
+}
+
+.ajuda a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  bottom: -3px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.ajuda a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.ajuda a:not(:last-child) {
+  margin-right: 10px;
+}
+
+.icones {
+  flex-flow: row nowrap;
+}
+
+.lembrar-senha {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.lembrar-senha input[type='checkbox'] {
+  display: none;
+}
+
+.lembrar-senha label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  margin-top: 10px;
+  margin-left: -15px;
+}
+
+.lembrar-senha label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 42%;
+  border: 2px solid rgb(148, 92, 74);
+  margin-right: 10px;
+  vertical-align: middle;
+  background-color: transparent;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.lembrar-senha input[type='checkbox']:checked + label::before {
+  background-color: rgb(148, 92, 74);
+  border-color: rgb(148, 92, 74);
+}
+
+.lembrar-senha input[type='checkbox']:checked + label::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 7.4%;
+  transform: translate(-50%, -50%);
+}
+
+#logo {
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+#logo:hover {
+  transform: rotate(360deg);
+}
+
+#logo:active {
+  transform: rotate(720deg);
+  transition: transform 0.3s ease;
+}
+
+#email-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.login-message {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.login-message.success {
+  background-color: rgba(72, 187, 120, 0.8);
+  color: white;
+}
+
+.login-message.error {
+  background-color: rgba(255, 87, 87, 0.8);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .loginBtn {
+    padding: 12px;
+    font-size: 14px;
+  }
+  input {
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 601px) {
+  .loginBtn {
+    padding: 17px;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
 }

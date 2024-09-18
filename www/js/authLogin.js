@@ -1,72 +1,54 @@
-function login(){ 
-                
-  const auth = firebase.auth()
-  const database = firebase.database()
+import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
+import { auth } from './firebase.js'
 
-  var email = document.getElementById("email").value;
-  var senha = document.getElementById('pass').value;
+function login() {
+  const email = document.getElementById('email').value.trim()
+  const password = document.getElementById('pass').value.trim()
+  const loginMessage = document.getElementById('loginMessage')
 
+  loginMessage.innerHTML = ''
+  loginMessage.style.opacity = 0
+  loginMessage.style.display = 'none'
 
-  if (validate_email(email) == false){
-    alert('Email inválido')
+  if (email === '' || password === '') {
+    loginMessage.innerHTML =
+      '<i class="fa fa-exclamation-circle"></i> Por favor, preencha todos os campos.'
+    loginMessage.className = 'login-message error'
+    loginMessage.style.display = 'block'
+
+    setTimeout(() => {
+      loginMessage.style.opacity = 1
+    }, 10)
     return
   }
 
-  if (validate_password(senha) == false){
-    alert('Senha inválida')
-    return
-  }
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      loginMessage.innerHTML =
+        '<i class="fa fa-check-circle"></i> Login bem-sucedido!'
+      loginMessage.className = 'login-message success'
+      loginMessage.style.display = 'block'
 
-  firebase
-      .auth()
-      .signInWithEmailAndPassword(email, senha)
-      .then(function(user){ 
-      
-      var user = auth.currentUser
+      setTimeout(() => {
+        loginMessage.style.opacity = 1
+      }, 10)
 
-      var database_ref = database.ref()
+      setTimeout(() => {
+        window.location.href = 'menuPrincipal.html'
+      }, 2000)
+    })
+    .catch((error) => {
+      const errorMessage = error.message
+      loginMessage.innerHTML =
+        '<i class="fa fa-exclamation-circle"></i> Erro de autenticação: ' +
+        errorMessage
+      loginMessage.className = 'login-message error'
+      loginMessage.style.display = 'block'
 
-      var user_data = {
-        last_login : Date.now()
-      }
-
-    database_ref.child('users/' + user.uid).update(user_data)
-    alert('Usuário conectado :D')
-    window.location.href = "menuPrincipal.html";
-
-    }).catch(function(error){
-      var error_code = error.code
-      var error_message = error.message
-        
-          alert("Falha ao logar D:");
-      });
+      setTimeout(() => {
+        loginMessage.style.opacity = 1
+      }, 10)
+    })
 }
 
-function validate_email(email) {
-  expression = /^[^@]+@\w+(\.\w+)+\w$/
-  if (expression.test(email) == true) {
-    return true
-  } else {
-    return false
-  }
-}
-
-function validate_password(senha) {
-  if (senha < 6) {
-    return false
-  } else {
-    return true
-  }
-}
-
-function validate_field(field) {
-  if (field == null) {
-    return false
-  }
-
-  if (field.length <= 0) {
-    return false
-  } else {
-    return true
-  }
-}
+document.querySelector('.loginBtn').addEventListener('click', login)
