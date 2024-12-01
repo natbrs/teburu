@@ -1,15 +1,16 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyC-BnCbDt7NnxI9JXcetHpPBJhZVAdgp6s",
-    authDomain: "appteburu-db.firebaseapp.com",
-    projectId: "appteburu-db",
-    storageBucket: "appteburu-db.appspot.com",
-    messagingSenderId: "439242193658",
-    appId: "1:439242193658:web:817e85bc1ee4a99953e743",
-    measurementId: "G-5KJ281W2C2"
-  };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-  
+const firebaseConfig={
+  apiKey: "AIzaSyCy-2HMoESAn7pxAb5WuOKF7ocjB0uo42k",
+  authDomain: "appteburu-87775.firebaseapp.com",
+  databaseURL: "https://appteburu-87775-default-rtdb.firebaseio.com",
+  projectId: "appteburu-87775",
+  storageBucket: "appteburu-87775.appspot.com",
+  messagingSenderId: "393098834565",
+  appId: "1:393098834565:web:61cb771a9d4f7741d56fec",
+  measurementId: "G-ZQSLHW5T74"
+};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+export { auth };
