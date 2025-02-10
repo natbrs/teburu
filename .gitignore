@@ -7,4 +7,5 @@ node_modules/
 /plugins/
 /platforms/
 .eslintrc.js
-www/js/firebase.js
+
+.env
