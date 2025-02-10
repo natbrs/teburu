@@ -1,46 +1,23 @@
 {
-  "name": "com.projeto.teburu",
-  "displayName": "Teburu app",
+  "name": "teburu",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "lint:fix": "eslint . --fix"
+    "start": "node server.js",
+    "cordova": "cordova run browser",
+    "dev": "concurrently \"npm start\" \"npm run cordova\""
   },
-  "keywords": [
-    "ecosystem:cordova"
-  ],
-  "author": "Apache Cordova Team",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "cordova-android": "^13.0.0",
-    "cordova-browser": "^7.0.0",
-    "cordova-plugin-android-permissions": "^1.1.5",
-    "cordova-plugin-badge": "^0.8.9",
-    "cordova-plugin-device": "^3.0.0",
-    "cordova-plugin-firebasex": "^16.5.0",
-    "cordova-plugin-local-notification": "^1.0.0",
-    "cordova-plugin-local-notifications": "^1.0.0",
-    "cordova-plugin-toast": "^1.0.1",
-    "dotenv-webpack": "^8.1.0",
-    "eslint": "^9.9.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "gradle": "^1.2.4",
-    "prettier": "^3.3.3",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
-  },
+  "author": "Seu Nome",
+  "license": "ISC",
   "cordova": {
     "plugins": {
       "cordova-plugin-android-permissions": {},
       "cordova-plugin-firebasex": {},
       "cordova-plugin-toast": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-local-notification": {}
+      "cordova-plugin-local-notification": {
+        "ANDROID_SUPPORT_V4_VERSION": "26.+"
+      }
     },
     "platforms": [
       "browser",
@@ -48,6 +25,19 @@
     ]
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-basic-auth": "^1.2.1",
+    "firebase": "^11.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "cordova-browser": "^7.0.0"
   }
 }
