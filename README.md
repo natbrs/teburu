@@ -14,7 +14,7 @@ O objetivo principal deste projeto é criar um ambiente que incentive a interaç
 
 ## Tecnologias Utilizadas
 
-- **Plataforma:** Android
+- **Plataforma:** Android e Web.
 - **Linguagens:** HTML/CSS, JavaScript e C#
 - **Frameworks e Bibliotecas:** Cordova e Firebase
 
