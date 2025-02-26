@@ -39,4 +39,8 @@ const storage = getStorage(app);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-export { auth, firestore, storage, analytics, database };
+async function signOutUser() {
+  return signOut(auth);
+}
+
+export { app, auth, firestore, storage, analytics, database, signOutUser };

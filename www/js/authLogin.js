@@ -1,5 +1,7 @@
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { signInWithEmailAndPassword, getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { auth } from './firebase.js';
+
+const authInstance = getAuth();
 
 function login() {
   const email = document.getElementById('email').value.trim();
@@ -22,7 +24,7 @@ function login() {
     return;
   }
 
-  signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(authInstance, email, password)
     .then((userCredential) => {
       loginMessage.innerHTML =
         '<i class="fa fa-check-circle"></i> Login bem-sucedido!';
@@ -51,4 +53,14 @@ function login() {
     });
 }
 
-document.querySelector('.loginBtn').addEventListener('click', login);
+document.querySelector('#btnLogin').addEventListener('click', login);
+
+document.getElementById('logout').addEventListener('click', async () => {
+  try {
+    await signOut(authInstance);
+    console.log('User signed out.');
+    window.location.href = 'index.html';
+  } catch (error) {
+    console.error('Sign out error:', error);
+  }
+});
