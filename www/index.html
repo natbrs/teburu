@@ -13,7 +13,7 @@
     <script type="module" src="js/firebase.js"></script>
     <script src="js/jquery.js"></script>
     <script src="cordova.js"></script>
-    <script src="js/authLogin.js" type="module"></script>
+    <script type="module" src="js/authLogin.js"></script>
     <!-- Título da Página -->
     <title>tebLogin</title>
     <!-- Importações Libs, Components & etc -->
@@ -38,7 +38,7 @@
                     <label for="rememberMe">Lembrar senha</label>
                 </div>
             </div>
-            <button class="loginBtn" type="button" style="background: rgb(148, 92, 74);">
+            <button id="btnLogin" class="loginBtn" type="button" style="background: rgb(148, 92, 74);">
                 <a>Entrar</a>
             </button>
             <button class="loginBtn" type="button" onclick="window.location.href='menuCadastro.html'"
@@ -52,7 +52,6 @@
             <div id="loginMessage" class="login-message"></div>
         </div>
     </div>
-
     <!-- Implementações Scripts Externos -->
     <script src="js/main.js"></script>
     <script src="js/togglePass.js"></script>

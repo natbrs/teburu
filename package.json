@@ -4,24 +4,21 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "cordova": "cordova run browser",
-    "dev": "concurrently \"npm start\" \"npm run cordova\""
+    "cordova": "cordova run browser --no-open",
+    "dev": "concurrently \"nodemon server.js\" \"cordova run browser --no-open\"",
+    "cordova-sync": "concurrently \"nodemon server.js\" \"cordova run browser --no-open\" \"browser-sync start --proxy 'localhost:8000' --files 'platforms/browser/www/**/*' --port 3000 --open\""
   },
-  "author": "Seu Nome",
+  "author": "natbrs",
   "license": "ISC",
   "cordova": {
     "plugins": {
       "cordova-plugin-android-permissions": {},
       "cordova-plugin-firebasex": {},
       "cordova-plugin-toast": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-local-notification": {
-        "ANDROID_SUPPORT_V4_VERSION": "26.+"
-      }
+      "cordova-plugin-device": {}
     },
     "platforms": [
-      "browser",
-      "android"
+      "browser"
     ]
   },
   "dependencies": {
@@ -37,7 +34,10 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
-    "concurrently": "^7.0.0",
-    "cordova-browser": "^7.0.0"
+    "browser-sync": "^3.0.3",
+    "concurrently": "^7.6.0",
+    "cordova-browser": "^7.0.0",
+    "eslint": "^9.20.1",
+    "nodemon": "^3.1.9"
   }
 }
