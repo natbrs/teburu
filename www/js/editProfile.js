@@ -7,22 +7,33 @@ const firestore = getFirestore(app);
 
 window.editBiography = function() {
   const biographyText = document.getElementById('user-biography').innerText;
-  document.getElementById('biography-input').value = biographyText;
+  const biographyInput = document.getElementById('biography-input');
+  if (biographyText.includes('Você ainda não adicionou uma biografia.')) {
+    biographyInput.value = '';
+  } else {
+    biographyInput.value = biographyText;
+  }
   document.getElementById('user-biography').style.display = 'none';
-  document.getElementById('biography-input').style.display = 'block';
-  document.getElementById('save-biography-btn').style.display = 'block';
+  document.querySelector('.biography-edit-container').style.display = 'flex';
 };
 
 window.saveBiography = async function() {
-  const newBiography = document.getElementById('biography-input').value;
+  let newBiography = document.getElementById('biography-input').value.trim();
   const user = auth.currentUser;
+  if (newBiography === '') {
+    newBiography = 'Você ainda não adicionou uma biografia. <br>(Clique para adicionar)';
+  }
   if (user) {
     await updateDoc(doc(firestore, 'users', user.uid), {
       biography: newBiography
     });
     document.getElementById('user-biography').innerHTML = newBiography;
     document.getElementById('user-biography').style.display = 'block';
-    document.getElementById('biography-input').style.display = 'none';
-    document.getElementById('save-biography-btn').style.display = 'none';
+    document.querySelector('.biography-edit-container').style.display = 'none';
   }
+};
+
+window.cancelBiography = function() {
+  document.getElementById('user-biography').style.display = 'block';
+  document.querySelector('.biography-edit-container').style.display = 'none';
 };

@@ -12,6 +12,7 @@
   --box-color: rgb(168, 96, 62);
   --shadow-color: rgba(168, 96, 62, 0.285);
   --select-color: rgb( 99, 22, 31);
+  --ready-color: rgb(148, 92, 74);
   --body-font: "Lato", serif;
   --h1-font-size: 1.5rem;
   --normal-font-size: .938rem;
@@ -405,8 +406,66 @@ body {
   margin-inline-end: 0px;
 }
 
-#profile-nick-menu{
+#profile-nick-menu {
   font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+#user-level {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+#biography-input {
+	width: 80%;
+	max-width: 300px;
+	height: 80px;
+	border-radius: 20px;
+	border: transparent;
+  box-shadow: 0 0 5px rgba(209, 139, 106, 0.5);
+	padding: 10px;
+	font-family: var(--body-font);
+	font-size: var(--normal-font-size);
+	color: var(--text-color);
+	background-color: var(--shadow-color);
+	resize: none;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	margin: 0 auto;
+  display: block;
+}
+
+#biography-input:focus {
+  border-color: var(--select-color);
+  box-shadow: 0 0 5px rgba(209, 139, 106, 0.5);
+}
+
+.biography-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  bottom: -40px;
+}
+
+.button-container .btn {
+  margin-left: 2.5px;
+  background-color: var(--ready-color);
+  color: white;
+  border: transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(209, 139, 106, 0.5);
+  height: 30px;
+  width: 75px;
+  transition: transform 0.3s ease;
+}
+
+.button-container .btn:hover {
+  transform: scale(1.1);
 }
 
 .linha{
@@ -500,41 +559,9 @@ p {
 }
 
 /* Botão de Perfil */
-.buttons button:nth-child(1) {
-    border: 1px solid rgb(209, 139, 106)!important;
-    background-color: rgb(209, 139, 106);
-    color: #fff;
-    height: 40px;
-}
 
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-  cursor: pointer;
-}
 
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  user-select: none;
-  background-color: transparent;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-[type=button], [type=reset], [type=submit], button {
-  -webkit-appearance: button;
-}
-button, select {
-  text-transform: none;
-}
-button, input, optgroup, select, textarea {
-  margin: 0;
-  font-family: inherit;
-}
+
 
 
 /* Configurações */

@@ -29,6 +29,8 @@ function initializeProfile() {
         const profileNick = document.getElementById("profile-nick");
         const profileNickMenu = document.getElementById("profile-nick-menu");
         const userLevel = document.getElementById("user-level");
+        const biography = userData.biography || 'Você ainda não adicionou uma biografia. <br>(Clique para adicionar)';
+        document.getElementById('user-biography').innerHTML = biography;
         if (userDoc.exists()) {
           profileImg.src = userData.profilePicUrl;
           profileImgMini.src = userData.profilePicUrl;

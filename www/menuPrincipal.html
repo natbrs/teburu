@@ -181,16 +181,21 @@
                         <div class="text-center">
                             <img src="img/perfil.png" alt="" width="100" class="rounded-circle" id="profile-img-menu">
                             <h5 id="profile-nick-menu"></h5>
-                        </div>
-                        <div class="text-center mt-3">
-                            <h5 id="email"></h5>
                             <span class="bg-secondary p-1 px-4 rounded text-white">Nível: <span
-                                    id="user-level"></span></span>
-                            <!-- <div class="px-4 mt-1">
-                                <p class="fonts"> Você ainda não adicionou uma biografia.
-                                </p>
-                            </div> -->
-                            <!-- <div class="buttons"><button class="btn btn-primary px-4 ms-3">Editar Perfil</button> </div> -->
+                                    id="user-level">0</span></span>
+                        </div>
+                        <div class="px-4 mt-1 text-center">
+                            <p class="fonts" id="user-biography" onclick="editBiography()">Você ainda não adicionou uma
+                                biografia. <br>(Clique para adicionar)</p>
+                            <div class="biography-edit-container" style="display:none;">
+                                <textarea id="biography-input" class="fonts"></textarea>
+                                <div class="button-container">
+                                    <button id="save-biography-btn" class="btn btn-primary"
+                                        onclick="saveBiography()">Salvar</button>
+                                    <button id="cancel-biography-btn" class="btn btn-secondary"
+                                        onclick="cancelBiography()">Cancelar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,6 +290,7 @@
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/showProfile.js"></script>
     <script type="module" src="js/authLogin.js"></script>
+    <script type="module" src="js/editProfile.js"></script>
 </body>
 
 </html>
