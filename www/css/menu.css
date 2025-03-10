@@ -39,7 +39,7 @@ body {
   padding: 4.5rem 0 2rem;
 }
 .section__title {
-  margin-top: -50px;
+  margin-top: -70px;
   font-size: var(--h1-font-size);
   color: var(--select-color);
   text-align: center;
@@ -165,7 +165,7 @@ body {
   font-weight: bold;
 }
 
-.profile-img, #profile-img-menu {
+.profile-img, .rounded-circle{
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -195,7 +195,7 @@ body {
   display: none;
   position: absolute;
   width: 200px;
-  height: 165px;
+  height: 210px;
   top: 130%;
   left: -200%;
   font-size: 14px;
@@ -241,6 +241,52 @@ body {
   border-radius: 20px;
 }
 
+#editar-perfil #change-profile-pic-btn {
+    margin-top: -14px;
+    display: block;
+    padding: 10px 10px;
+    background-color: var(--ready-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#editar-perfil #change-profile-pic-btn:hover {
+    background-color: var(--select-color);
+}
+
+#editar-perfil #change-profile-pic-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#change-profile-pic-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--ready-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#change-profile-pic-btn:hover {
+    background-color: var(--select-color);
+}
+
+#change-profile-pic-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 
 /* .profile-option-box a:nth-child(2):hover {
   background-color: rgba(0, 0, 0, 0.248);
@@ -398,22 +444,36 @@ body {
 /* Perfil */
 /* Posicionamento de Tela */
 
-#profile-img-menu {
-  font-size: 1.50rem;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+#profile-img-menu{
+  display: block;
+  margin: 0 auto;
+  margin-top: 44px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 #profile-nick-menu {
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
 }
 
-#user-level {
-  font-size: 1rem;
-  margin-top: 10px;
+.profile-level{
+  display: inline-block;
+  padding: .25rem 1rem; 
+  background-color: var(--ready-color);
+  color: white;
+  border-radius: 20px;
+  margin-left: 20;
+  text-align: center;
+  margin-top: 5px; 
+}
+
+.profile-biography{
+  margin-top: 2.0rem;
+  text-align: center;
 }
 
 #biography-input {
@@ -468,101 +528,159 @@ body {
   transform: scale(1.1);
 }
 
-.linha{
-  width: 100%;
-  border-bottom: 1px solid rgb(209, 139, 106);
-}
-
-.text-center {
-  text-align: center!important;
-}
 .rounded-circle {
   border-radius: 50%!important;
 }
-img, svg {
-  vertical-align: middle;
-}
+
 .text-center {
-  text-align: center!important;
-}
-.mt-3 {
-  margin-top: 0.7rem!important;
-}
-.rounded {
-  border-radius: .25rem!important;
-}
-.bg-secondary {
-  background-color: rgb( 99, 22, 31)!important;
-}
-.text-white {
-  color: #fff!important;
-}
-.px-4 {
-  padding-right: 1.5rem!important;
-  padding-left: 1.5rem!important;
-}
-.p-1 {
-  padding: .25rem!important;
-}
-.mb-0 {
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem!important;
-}
-.mt-2 {
-  margin-top: .5rem!important;
+  text-align: center;
 }
 
-h6{
-  display: block;
-  margin-block-start: 1.67em;
-  margin-block-end: 1.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-size: 1.25rem;
-  color: rgb( 99, 22, 31);
+/* Editar Perfil */
+#editar-perfil .container {
+    max-width: 360px;
+    margin: auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
-.mt-1 {
-  margin-top: 2.0rem;
-}
-.fonts {
-  font-size: 35px;
-}
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+#editar-perfil .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-p {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+#editar-perfil .login img {
+    margin-bottom: 30px;
 }
 
-.fonts {
-  font-size: 15px
+#editar-perfil .digito {
+    display: block;
+    position: relative;
+    padding: 10px 10px;
+    bottom: -5px;
 }
 
-.pl-4{
-  padding-left: 1.5rem!important;
+#editar-perfil .loginBtn {
+    width: 80%;
+    padding: 15px;
+    cursor: pointer;
+    border: 2px solid rgb(131, 68, 47);
+    border-radius: 20px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgb(105, 49, 30);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
 }
-.pr-4{
-  padding-right: 1.5rem!important;
-}
-.pb-3{
-  padding-bottom: 1rem!important;
-}
-.pt-3{
-  padding-top: 1rem!important;
+
+#editar-perfil .loginBtn:hover {
+    filter: brightness(0.85);
 }
 
-/* Botão de Perfil */
+#editar-perfil .loginBtn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 
+#editar-perfil input {
+  width: 100%;
+  height: 46px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 1.5px solid rgb(148, 92, 74);
+  border-radius: 10px;
+  background-color: transparent;
+  outline: none;
+  transition: all 0.3s ease-out;
+  border-radius: 0;
+  font-size: 16px;
+  transition:
+    font-size 0.3s ease,
+    transform 0.3s ease;
+}
 
+#editar-perfil input::placeholder {
+    color: rgb(148, 92, 74);
+}
 
+#editar-perfil input:not(:placeholder-shown) {
+  border-bottom: rgb(131, 68, 47) 1.5px solid;
+}
 
+#editar-perfil input:not(:placeholder-shown) + label {
+  transform: translateY(-14px) scale(0.8);
+}
+
+#editar-perfil input:focus{
+  color: rgb(148, 92, 74);
+  font-size: 18px;
+  transform: scale(1.05); 
+}
+
+#editar-perfil input:not(:placeholder-shown) {
+  color: rgb(148, 92, 74);
+}
+
+#editar-perfil .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#editar-perfil .password-container input {
+    width: 100%;
+    padding-right: 30px;
+    font-size: 16px;
+    transition: font-size 0.3s ease, transform 0.3s ease;
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: rgb(148, 92, 74);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.password-container input:focus + i,
+.password-container input:not(:placeholder-shown) + i {
+    opacity: 1;
+}
+
+#editar-perfil label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: rgb(148, 92, 74);
+    font-weight: bold;
+    margin-top: 11px;
+}
+
+#editar-perfil .container::-webkit-scrollbar {
+    width: 0;
+}
+
+#editar-perfil .container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#editar-perfil .container::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+}
+
+#editar-perfil .container {
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent; 
+}
 
 /* Configurações */
 /* Posicionamento de Tela */

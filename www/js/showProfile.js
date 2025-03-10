@@ -1,21 +1,9 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 import { app } from './firebase.js';
 
 const auth = getAuth();
 const firestore = getFirestore(app);
-
-async function getProfilePicUrl(userId) {
-  console.log('Fetching profile picture URL for user:', userId);
-  const userDoc = await getDoc(doc(firestore, 'users', userId));
-  if (userDoc.exists()) {
-    console.log('User document data:', userDoc.data());
-    return userDoc.data().profilePicUrl;
-  } else {
-    console.log('No such document!');
-    return null;
-  }
-}
 
 function initializeProfile() {
   onAuthStateChanged(auth, async (user) => {
@@ -23,25 +11,34 @@ function initializeProfile() {
       const userDoc = await getDoc(doc(firestore, "users", user.uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        const profileImg = document.getElementById("profile-img");
-        const profileImgMini = document.getElementById("profile-img-mini");
-        const profileImgMenu = document.getElementById("profile-img-menu");
-        const profileNick = document.getElementById("profile-nick");
-        const profileNickMenu = document.getElementById("profile-nick-menu");
-        const userLevel = document.getElementById("user-level");
-        const biography = userData.biography || 'Você ainda não adicionou uma biografia. <br>(Clique para adicionar)';
-        document.getElementById('user-biography').innerHTML = biography;
-        if (userDoc.exists()) {
-          profileImg.src = userData.profilePicUrl;
-          profileImgMini.src = userData.profilePicUrl;
-          profileImgMenu.src = userData.profilePicUrl;
-          profileNick.textContent = userData.nick;
-          profileNickMenu.textContent = userData.nick;
-          userLevel.textContent = userData.level;
+        const profileElements = {
+          'profile-img': userData.profilePicUrl,
+          'profile-img-mini': userData.profilePicUrl,
+          'profile-img-menu': userData.profilePicUrl,
+          'profile': userData.profilePicUrl,
+          'profile-nick': userData.nick,
+          'profile-nick-menu': userData.nick,
+          'user-level': userData.level,
+          'user-biography': userData.biography || 'Você ainda não adicionou uma biografia. <br>(Clique para adicionar)'
+        };
+
+        for (const [id, value] of Object.entries(profileElements)) {
+          const element = document.getElementById(id);
+          if (element) {
+            if (element.tagName === 'IMG') {
+              element.src = value;
+            } else if (id === 'user-biography') {
+              element.innerHTML = value;
+            } else {
+              element.textContent = value;
+            }
+          }
         }
+        document.getElementById('nick-edit').value = userData.nick;
+        document.getElementById('email-edit').value = userData.email;
       }
     }
   });
 }
 
-export { getProfilePicUrl, initializeProfile };
+export { initializeProfile };

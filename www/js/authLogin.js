@@ -14,7 +14,7 @@ function login() {
 
   if (email === '' || password === '') {
     loginMessage.innerHTML =
-      '<i class="fa fa-exclamation-circle"></i> Por favor, preencha todos os campos.';
+      '<i class="bx bxs-error-circle"></i> Por favor, preencha todos os campos.';
     loginMessage.className = 'login-message error';
     loginMessage.style.display = 'block';
 
@@ -27,7 +27,7 @@ function login() {
   signInWithEmailAndPassword(authInstance, email, password)
     .then((userCredential) => {
       loginMessage.innerHTML =
-        '<i class="fa fa-check-circle"></i> Login bem-sucedido!';
+        '<i class="bx bxs-check-circle"></i> Login bem-sucedido!';
       loginMessage.className = 'login-message success';
       loginMessage.style.display = 'block';
 
@@ -42,7 +42,7 @@ function login() {
     .catch((error) => {
       const errorMessage = error.message;
       loginMessage.innerHTML =
-        '<i class="fa fa-exclamation-circle"></i> Erro de autenticação: ' +
+        '<i class="bx bxs-error-circle"></i> Erro de autenticação: ' +
         errorMessage;
       loginMessage.className = 'login-message error';
       loginMessage.style.display = 'block';

@@ -152,7 +152,7 @@ input:not(:placeholder-shown) {
 .password-container i {
   position: absolute;
   right: 10px;
-  font-size: 20px;
+  font-size: 28px;
   cursor: pointer;
   color: rgb(148, 92, 74);
   opacity: 0;
@@ -227,6 +227,7 @@ input:not(:placeholder-shown) {
   font-family: 'Lato', sans-serif;
   margin-top: 10px;
   margin-left: -15px;
+  position: relative;
 }
 
 .lembrar-senha label::before {
@@ -239,9 +240,7 @@ input:not(:placeholder-shown) {
   margin-right: 10px;
   vertical-align: middle;
   background-color: transparent;
-  transition:
-    background-color 0.3s,
-    border-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .lembrar-senha input[type='checkbox']:checked + label::before {
@@ -250,14 +249,14 @@ input:not(:placeholder-shown) {
 }
 
 .lembrar-senha input[type='checkbox']:checked + label::after {
-  content: '\f00c';
-  font-family: 'Font Awesome 6 Free';
+  content: '\ea41';
+  font-family: 'boxicons';
   font-weight: 900;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   position: absolute;
   top: 50%;
-  left: 7.4%;
+  left: 10.5px;
   transform: translate(-50%, -50%);
 }
 
@@ -275,7 +274,7 @@ input:not(:placeholder-shown) {
   transition: transform 0.3s ease;
 }
 
-#perfil {
+#profile {
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -284,16 +283,16 @@ input:not(:placeholder-shown) {
   cursor: pointer;
 }
 
-#perfil:hover {
+#profile:hover {
   transform: rotate(360deg);
 }
 
-#perfil:active {
+#profile:active {
   transform: rotate(720deg);
   transition: transform 0.3s ease;
 }
 
-#perfil{
+#profile{
   height: 120px;
   border-radius: 80px;
   border: 2.5px solid rgb(99, 22, 31);
@@ -303,28 +302,6 @@ input:not(:placeholder-shown) {
   color: red;
   font-size: 14px;
   margin-top: 5px;
-}
-
-.login-message {
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.login-message.success {
-  background-color: rgba(72, 187, 120, 0.8);
-  color: white;
-}
-
-.login-message.error {
-  background-color: rgba(255, 87, 87, 0.8);
-  color: white;
 }
 
 @media (max-width: 600px) {
