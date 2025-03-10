@@ -9,15 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/global.css">
     <!-- Implementações JS, PLUGINS & etc -->
     <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/authLogin.js"></script>
     <script src="js/jquery.js"></script>
     <script src="cordova.js"></script>
-    <script type="module" src="js/authLogin.js"></script>
     <!-- Título da Página -->
     <title>tebLogin</title>
     <!-- Importações Libs, Components & etc -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </head>
@@ -31,7 +32,7 @@
                 <input type="email" id="email" placeholder="Email" required>
                 <div class="password-container">
                     <input type="password" maxlength="35" placeholder="Senha" id="pass">
-                    <i id="olho" class="fa-solid fa-eye"></i>
+                    <i id="olho" class="bx bx-low-vision"></i>
                 </div>
                 <div class="lembrar-senha">
                     <input type="checkbox" id="rememberMe">

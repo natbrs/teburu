@@ -11,7 +11,7 @@ function uploadAndPreviewImage(event) {
 
     const reader = new FileReader();
     reader.onload = function() {
-        const imgElement = document.getElementById('perfil');
+        const imgElement = document.getElementById('profile');
         imgElement.src = reader.result;
     };
     reader.readAsDataURL(selectedFile);

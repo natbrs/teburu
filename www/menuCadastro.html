@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/global.css">
     <script src="cordova.js"></script>
     <title>tebCadastro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <div class="container">
         <div class="login">
             <center>
-                <img src="img/perfil.png" class="perfil" id="perfil"
+                <img src="img/perfil.png" class="perfil" id="profile"
                     onclick="document.getElementById('fileInput').click();">
                 <input type="file" id="fileInput" style="display: none;" accept="image/*"
                     onchange="uploadAndPreviewImage(event)">
@@ -30,11 +31,11 @@
                 <input type="email" maxlength="70" placeholder="Email" id="email" required><br>
                 <div class="password-container">
                     <input type="password" id="pass" maxlength="20" placeholder="Senha" required>
-                    <i id="olho" class="fa-solid fa-eye"></i>
+                    <i id="olho" class="bx bx-low-vision"></i>
                 </div>
                 <div class="password-container">
                     <input type="password" id="pass-confirm" maxlength="20" placeholder="Confirmar Senha" required>
-                    <i id="olho-confirm" class="fa-solid fa-eye"></i>
+                    <i id="olho-confirm" class="bx bx-low-vision"></i>
                 </div>
             </div>
             <button class="loginBtn" type="button" id="confirmar" style="background: rgb(148, 92, 74);">

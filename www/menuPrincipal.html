@@ -8,7 +8,9 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/global.css">
     <!-- Implementações JS, PLUGINS e ETC -->
     <script src="js/jquery.js"></script>
     <script src="./../cordova.js"></script>
@@ -17,6 +19,7 @@
         import { initializeProfile } from './js/showProfile.js';
         initializeProfile();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <!-- Título da Página -->
     <title>Menu Principal</title>
 </head>
@@ -58,6 +61,11 @@
                         <a href="#perfil" class="profile-option">
                             <img src="img/perfil.png" id="profile-img-mini"></i>
                             <i id="profile-nick"> </i> <br>Perfil
+                        </a>
+                    </div>
+                    <div class="profile-option-box">
+                        <a href="#editar-perfil" class="profile-option">
+                            <i class='bx bxs-edit'></i> Editar Perfil
                         </a>
                     </div>
                     <div class="profile-option-box">
@@ -181,16 +189,21 @@
                         <div class="text-center">
                             <img src="img/perfil.png" alt="" width="100" class="rounded-circle" id="profile-img-menu">
                             <h5 id="profile-nick-menu"></h5>
+                            <span class="profile-level bg-secondary p-1 px-4 text-white">Nível: <span
+                                    id="user-level">0</span></span>
                         </div>
-                        <div class="text-center mt-3">
-                            <h5 id="email"></h5>
-                            <span class="bg-secondary p-1 px-4 rounded text-white">Nível: <span
-                                    id="user-level"></span></span>
-                            <!-- <div class="px-4 mt-1">
-                                <p class="fonts"> Você ainda não adicionou uma biografia.
-                                </p>
-                            </div> -->
-                            <!-- <div class="buttons"><button class="btn btn-primary px-4 ms-3">Editar Perfil</button> </div> -->
+                        <div class="profile-biography px-4 mt-1 text-center">
+                            <p class="fonts" id="user-biography" onclick="editBiography()">Você ainda não adicionou uma
+                                biografia. <br>(Clique para adicionar)</p>
+                            <div class="biography-edit-container" style="display:none;">
+                                <textarea id="biography-input" class="fonts"></textarea>
+                                <div class="button-container">
+                                    <button id="save-biography-btn" class="btn btn-primary"
+                                        onclick="saveBiography()">Salvar</button>
+                                    <button id="cancel-biography-btn" class="btn btn-secondary"
+                                        onclick="cancelBiography()">Cancelar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,6 +220,41 @@
     <section class="section section__height" id="historico">
         <!-- Menu Histórico -->
         <h2 class="section__title">Histórico</h2>
+    </section>
+    <section class="section section__height" id="editar-perfil">
+        <h2 class="section__title">Editar Perfil</h2>
+        <div class="container mt-5">
+            <div class="login">
+                <center>
+                    <img src="img/perfil.png" alt="" width="100" class="rounded-circle" id="profile"
+                        onclick="document.getElementById('fileInputEdit').click()">
+                    <input type="file" id="fileInputEdit" style="display: none;" accept="image/*"
+                        onchange="uploadAndPreviewImage(event)">
+                    <button id="change-profile-pic-btn"
+                        onclick="document.getElementById('fileInputEdit').click()">Alterar</button>
+                </center>
+                <div class="digito">
+                    <input type="text" id="nick-edit" maxlength="20" placeholder="Nome de Usuário" required><br>
+                    <input type="email" id="email-edit" maxlength="70" placeholder="Email" required><br>
+                    <div class="password-container">
+                        <input type="password" id="pass-confirm-edit" maxlength="20" placeholder="Senha Atual" required>
+                        <i id="olho-confirm-edit" class="bx bx-low-vision"></i>
+                    </div>
+                    <div class="password-container">
+                        <input type="password" id="pass-edit" maxlength="20" placeholder="Nova Senha" required>
+                        <i id="olho-edit" class="bx bx-low-vision"></i>
+                    </div>
+                    <div class="password-container">
+                        <input type="password" id="pass-confirm-new-edit" maxlength="20"
+                            placeholder="Confirmar Nova Senha" required>
+                        <i id="olho-confirm-new-edit" class="bx bx-low-vision"></i>
+                    </div>
+                </div>
+                <button type="button" class="loginBtn" onclick="saveProfile()"
+                    style="background: rgb(148, 92, 74);">Salvar Alterações</button>
+                <div id="profileMessage" class="login-message"></div>
+            </div>
+        </div>
     </section>
     <section class="section section__height" id="config">
         <!-- Menu Configurações -->
@@ -285,6 +333,8 @@
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/showProfile.js"></script>
     <script type="module" src="js/authLogin.js"></script>
+    <script type="module" src="js/editProfile.js"></script>
+    <script type="module" src="js/togglePass.js"></script>
 </body>
 
 </html>
