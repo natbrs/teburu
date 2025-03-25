@@ -208,58 +208,6 @@ input:not(:placeholder-shown) {
   flex-flow: row nowrap;
 }
 
-.lembrar-senha {
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.lembrar-senha input[type='checkbox'] {
-  display: none;
-}
-
-.lembrar-senha label {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  font-family: 'Lato', sans-serif;
-  margin-top: 10px;
-  margin-left: -15px;
-  position: relative;
-}
-
-.lembrar-senha label::before {
-  content: '';
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border-radius: 42%;
-  border: 2px solid rgb(148, 92, 74);
-  margin-right: 10px;
-  vertical-align: middle;
-  background-color: transparent;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.lembrar-senha input[type='checkbox']:checked + label::before {
-  background-color: rgb(148, 92, 74);
-  border-color: rgb(148, 92, 74);
-}
-
-.lembrar-senha input[type='checkbox']:checked + label::after {
-  content: '\ea41';
-  font-family: 'boxicons';
-  font-weight: 900;
-  color: #fff;
-  font-size: 16px;
-  position: absolute;
-  top: 50%;
-  left: 10.5px;
-  transform: translate(-50%, -50%);
-}
-
 #logo {
   transition: transform 0.6s ease;
   cursor: pointer;

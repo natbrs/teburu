@@ -21,14 +21,17 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <!-- Título da Página -->
-    <title>Menu Principal</title>
+    <title>tebPrincipal</title>
 </head>
 
 <body>
     <!-- Barra de Navegação -->
     <header class="header" id="header">
         <nav class="nav container">
-            <img src="img/icon-teburo.png" class="nav__logo" id="logo"></img>
+            <div class="nav__logo-container">
+                <img src="img/icon-teburo.png" class="nav__logo" id="logo"></img>
+                <span class="nav__logo-text">teburu</span>
+            </div>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
@@ -89,36 +92,50 @@
         <div class="boxes">
             <div class="box">
                 <div class="miniatura">
-                    <button onclick="window.location.href='tebjogo/index.html'" id="tebgame">
-                        <img src="img/ThumbJogo.png" width="120px">
-                        <div class="box__title">
-                            <h3>te<a style="color: yellow;">bee</a></h3>
-                        </div>
-                    </button>
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
                 </div>
             </div>
             <div class="box">
                 <div class="miniatura">
-                    <label for=""></label>
-                    <img src="img/ThumbNOTeburo.png" width="120px">
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
                 </div>
             </div>
             <div class="box">
                 <div class="miniatura">
-                    <label for=""></label>
-                    <img src="img/ThumbNOTeburo.png" width="120px">
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
                 </div>
             </div>
             <div class="box">
                 <div class="miniatura">
-                    <label for=""></label>
-                    <img src="img/ThumbNOTeburo.png" width="120px">
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
                 </div>
             </div>
             <div class="box">
                 <div class="miniatura">
-                    <label for=""></label>
-                    <img src="img/ThumbNOTeburo.png" width="120px">
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="miniatura">
+                    <img src="img/ThumbJogo.png" onclick="window.location.href='tebjogo/index.html'" id="tebgame">
+                    <div class="box__title">
+                        <h3>te<a style="color: yellow;">bee</a></h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,7 +143,7 @@
     </section>
     <section class="section section__height" id="loja">
         <!-- Menu Loja -->
-        <h2 class="section__title">Loja</h2>
+        <!-- <h2 class="section__title">Loja</h2> -->
         <div class="carteira">
             <div class="carteira__money">
                 <img src="img/coin.png" class="img__money" width="55px">
@@ -181,7 +198,7 @@
     </section>
     <section class="section section__height" id="perfil">
         <!-- Menu Perfil -->
-        <h2 class="section__title">Perfil</h2>
+        <!-- <h2 class="section__title">Perfil</h2> -->
         <div class="container mt-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-7">
@@ -219,10 +236,26 @@
     </section>
     <section class="section section__height" id="historico">
         <!-- Menu Histórico -->
-        <h2 class="section__title">Histórico</h2>
+        <!-- <h2 class="section__title">Histórico</h2> -->
+    </section>
+    <section class="section section__height" id="seguranca">
+        <!-- Menu Segurança-->
+        <div class="container mt-5">
+            <h2 class="section__title">Segurança</h2>
+            <div class="security-container">
+                <div class="security-option">
+                    <div class="check-option">
+                        <input type="checkbox" id="email-confirmation">
+                        <label for="email-confirmation" style="font-size: 16px">Ativar confirmação por email</label>
+                    </div>
+                </div>
+                <button type="button" class="loginBtn" onclick="saveSecuritySettings()">Salvar Configurações</button>
+                <div id="securityMessage" class="security-message"></div>
+            </div>
+        </div>
     </section>
     <section class="section section__height" id="editar-perfil">
-        <h2 class="section__title">Editar Perfil</h2>
+        <!-- <h2 class="section__title">Editar Perfil</h2> -->
         <div class="container mt-5">
             <div class="login">
                 <center>
@@ -250,76 +283,44 @@
                         <i id="olho-confirm-new-edit" class="bx bx-low-vision"></i>
                     </div>
                 </div>
-                <button type="button" class="loginBtn" onclick="saveProfile()"
-                    style="background: rgb(148, 92, 74);">Salvar Alterações</button>
+                <button type="button" class="loginBtn" onclick="saveProfile()">Salvar Alterações</button>
                 <div id="profileMessage" class="login-message"></div>
             </div>
         </div>
     </section>
-    <section class="section section__height" id="config">
+    <section class="section section__height d-flex align-items-center justify-content-center" id="config">
         <!-- Menu Configurações -->
-        <h2 class="section__title">Configurações</h2>
-        <div class="h-screen bg-blue-300 flex justify-center items-center">
-            <div class="container mx-auto">
-                <div class="max-w-sm mx-auto md:max-w-lg">
-                    <div class="w-full">
-                        <ul class="px-0">
-                            <a href="#info" class="nav__link">
-                                <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600"
-                                    style='border-bottom-width:0'>Informações Pessoais</li>
-                            </a>
-                            <div class="linha"></div>
-                            <a href="#info" class="nav__link">
-                                <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600"
-                                    style='border-bottom-width:0'>Termos e Condições</li>
-                            </a>
-                            <div class="linha"></div>
-                            <a href="#info" class="nav__link">
-                                <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600"
-                                    style='border-bottom-width:0'>Idioma e Região</li>
-                            </a>
-                            <div class="linha"></div>
-                            <a href="#info" class="nav__link">
-                                <li class="border bg-white list-none rounded-sm px-3 py-3 cursor-pointer hover:text-white hover:bg-blue-600"
-                                    style='border-bottom-width:0'>Segurança</li>
-                            </a>
-                            <div class="linha"></div>
-                            <a href="index.html" class="profile-option" id="logout">
-                                <i class='bx bxs-log-out'></i> Sair
-                            </a>
-                            <div class="linha"></div>
-                        </ul>
-                    </div>
-                </div>
+        <div class="config-container">
+            <div class="config-card">
+                <ul class="config-list">
+                    <li class="config-item">
+                        <a href="#editar-perfil" class="config-link">
+                            <i class='bx bxs-edit'></i> Editar Perfil
+                        </a>
+                    </li>
+                    <li class="config-item">
+                        <a href="#terms" class="config-link">
+                            <i class='bx bxs-file'></i> Termos e Condições
+                        </a>
+                    </li>
+                    <li class="config-item">
+                        <a href="#language" class="config-link">
+                            <i class='bx bxs-flag'></i> Idioma e Região
+                        </a>
+                    </li>
+                    <li class="config-item">
+                        <a href="#seguranca" class="config-link">
+                            <i class='bx bxs-lock'></i> Segurança
+                        </a>
+                    </li>
+                    <li class="config-item">
+                        <a href="index.html" class="config-link">
+                            <i class='bx bxs-log-out'></i> Sair
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
-    <section class="info__style" id="info">
-        <div class="">
-            <div class="">
-                <div class="">
-                    <h5 class="card-title">Informações Pessoais</h5>
-                    <p>
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="" class="" id="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Senha</label>
-                            <input type="" class="" id="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Observação</label>
-                            <input type="" class="" id="">
-                        </div>
-                        <button type="button" id="btnInserir" class="btn btn-primary">Atualizar</button>
-                    </form>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="deviceready" class="blink">Device is ready</div>
     </section>
     <!-- Firebase Plugins -->
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
@@ -335,6 +336,7 @@
     <script type="module" src="js/authLogin.js"></script>
     <script type="module" src="js/editProfile.js"></script>
     <script type="module" src="js/togglePass.js"></script>
+    <script type="module" src="js/security.js"></script>
 </body>
 
 </html>

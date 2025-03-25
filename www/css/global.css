@@ -1,5 +1,5 @@
 /* Mensagens de Login e Editar*/
-.login-message {
+.login-message, .edit-message, .security-message {
   width: 100%;
   padding: 15px;
   border-radius: 10px;
@@ -23,12 +23,76 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.login-message.success, .edit-message.success {
+.security-message {
+  width: 80%;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.login-message.success, .edit-message.success, .security-message.success {
   background-color: rgba(72, 187, 120, 0.8);
   color: white;
 }
 
-.login-message.error, .edit-message.error {
+.login-message.error, .edit-message.error, .security-message.error {
   background-color: rgba(255, 87, 87, 0.8);
   color: white;
+}
+
+.check-option {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.check-option input[type='checkbox'] {
+  display: none;
+}
+
+.check-option label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  margin-top: 10px;
+  margin-left: -15px;
+  position: relative;
+}
+
+.check-option label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 42%;
+  border: 2px solid rgb(148, 92, 74);
+  margin-right: 10px;
+  vertical-align: middle;
+  background-color: transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.check-option input[type='checkbox']:checked + label::before {
+  background-color: rgb(148, 92, 74);
+  border-color: rgb(148, 92, 74);
+}
+
+.check-option input[type='checkbox']:checked + label::after {
+  content: '\ea41';
+  font-family: 'boxicons';
+  font-weight: 900;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 10.5px;
+  transform: translate(-50%, -50%);
 }

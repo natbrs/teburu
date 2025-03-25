@@ -39,11 +39,11 @@ body {
   padding: 4.5rem 0 2rem;
 }
 .section__title {
-  margin-top: -70px;
-  font-size: var(--h1-font-size);
+  font-size: 25px;
   color: var(--select-color);
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 10px;
 }
 .section__height {
   height: 100vh;
@@ -72,7 +72,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: var(--container-color);
+  background-color: transparent;
   border-radius: 10px;
 }
 
@@ -92,6 +92,18 @@ body {
 .nav__logo:active {
   transform: rotate(720deg);
   transition: transform 0.3s ease;
+}
+
+.nav__logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--select-color);
+  margin-left: 10px;
 }
 
 .nav__img {
@@ -165,6 +177,11 @@ body {
   font-weight: bold;
 }
 
+.nav__link:hover .nav__icon,
+.nav__link:hover .nav__name {
+    color:var(--select-color);
+}
+
 .profile-img, .rounded-circle{
   width: 100px;
   height: 100px;
@@ -195,7 +212,7 @@ body {
   display: none;
   position: absolute;
   width: 200px;
-  height: 210px;
+  height: 212px;
   top: 130%;
   left: -200%;
   font-size: 14px;
@@ -415,30 +432,38 @@ body {
 /* Boxes de Jogos */
 .boxes{ 
   display: flex;
-  overflow-y: auto;
   flex-wrap: wrap;
-  padding: 0 300px;
-}
-.box {
-   min-width: 150px;
-   height: 160px;
-   text-align: center;
+  margin-top: 20px;
+  padding: 0 210px;
 }
 
-.box{
+.box {
+  background-color: var(--box-color);
+  height: 144px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
   transition: transform 0.5s ease;
+  width: 135px;
 }
 
 .box:hover{
   transform: scale(1.1);
+  border: 2px solid var(--select-color);
 }
 
-.miniatura button{ 
-  border: none;
+.miniatura img {
+  width: 130px;
+  border-radius: 12px;
+  height: 110px;
+  margin-top: 4px;
 }
 
-.box__title{
-  background-color: var(--box-color);
+.box__title {
+  margin-top: -5px;
+  margin-left: -75px;
+  color: var(--container-color);
+  font-size: 14px;
 }
 
 /* Perfil */
@@ -447,7 +472,7 @@ body {
 #profile-img-menu{
   display: block;
   margin: 0 auto;
-  margin-top: 44px;
+  margin-top: 20px;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -564,25 +589,25 @@ body {
     bottom: -5px;
 }
 
-#editar-perfil .loginBtn {
-    width: 80%;
-    padding: 15px;
-    cursor: pointer;
-    border: 2px solid rgb(131, 68, 47);
-    border-radius: 20px;
-    margin-top: 5px;
-    font-size: 16px;
-    color: #fff;
-    background-color: rgb(105, 49, 30);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+#editar-perfil .loginBtn, #seguranca .loginBtn {
+  width: 80%;
+  padding: 15px;
+  cursor: pointer;
+  border: 2px solid rgb(131, 68, 47);
+  border-radius: 20px;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #fff;
+  background: var(--ready-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
 }
 
-#editar-perfil .loginBtn:hover {
+#editar-perfil .loginBtn:hover, #seguranca .loginBtn:hover {
     filter: brightness(0.85);
 }
 
-#editar-perfil .loginBtn:active {
+#editar-perfil .loginBtn:active, #seguranca .loginBtn:active {
     transform: scale(0.95);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -719,6 +744,134 @@ ul {
 }
 
 
+.list-group {
+  width: 100%;
+}
+
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 15px 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.list-group-item::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 1px;
+  background-color: var(--box-color);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.list-group-item:last-child::after {
+  display: none;
+}
+
+.list-group-item a {
+  color: var(--box-color);
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.list-group-item:hover {
+  background-color: var(--shadow-color);
+}
+
+.config-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.config-card {
+    background-color: var(--container-color);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.config-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.config-item {
+    margin-bottom: 15px;
+    border-bottom: 1.5px solid rgb(168, 96, 62);
+}
+
+.config-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: transparent;
+  color: var(--box-color);
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.config-link i {
+    margin-right: 10px;
+}
+
+.config-link:hover {
+    background-color: var(--shadow-color);
+}
+
+/* Segurança */
+.security-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--container-color);
+    border-radius: 10px;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.security-option {
+    margin-bottom: 20px;
+}
+
+.security-label {
+    font-size: 1rem;
+    color: var(--box-color);
+    display: flex;
+    align-items: center;
+}
+
+
+.security-btn {
+    background-color: var(--ready-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.security-btn:hover {
+    background-color: var(--select-color);
+}
+
 /* Dimensões de Tela - Nav Bar 767px */
 @media screen and (max-width: 767px) {
   .nav__menu {
@@ -750,20 +903,18 @@ ul {
   }
 }
 
-/* Dimensões de Tela - Jogos, Box 411px */
-@media (min-width:411px){
+/* Dimensões de Tela - Jogos 899px */
+@media (min-width:899px){
   .box{
-    margin-top: 40px;
-    margin-left: 36px;
-    margin-right: 5px;
-    margin-bottom: 15px;
-   }
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  } 
 }
 
-/* Dimensões de Tela - Jogos, Box 360px */
-@media (min-width:360px){
+/* Dimensões de Tela - Jogos, Box 359px */
+@media (min-width:359px){
   .box{
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
