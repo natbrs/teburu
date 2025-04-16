@@ -1,111 +1,208 @@
-import { signInWithEmailAndPassword, getAuth, signOut, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
-import { auth } from './firebase.js';
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  signOut,
+  sendEmailVerification,
+} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  updateDoc,
+  setDoc,
+} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { auth } from './firebase.js'
+import { getDeviceInfo } from './security.js'
 
-const authInstance = getAuth();
-const firestore = getFirestore();
+const authInstance = getAuth()
+const firestore = getFirestore()
 
-function getDeviceInfo() {
-    return {
-        userAgent: navigator.userAgent,
-        platform: navigator.platform,
-        language: navigator.language,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    };
+authInstance.onAuthStateChanged(async (user) => {
+  if (user) {
+    await user.reload();
+    if (user.emailVerified) {
+      console.log('Email verificado. Atualizando dispositivo...');
+      await verifyDevice(user);
+    } else {
+      console.log('Email não verificado. Dispositivo não será atualizado.');
+    }
+  }
+});
+
+async function saveDeviceInfo(user) {
+  const deviceInfo = getDeviceInfo();
+  const docRef = doc(firestore, 'users', user.uid, 'security', 'deviceInfo');
+  const docSnap = await getDoc(docRef);
+  let registeredDevices = [];
+  let isNewDevice = false;
+
+  if (!docSnap.exists()) {
+    console.log('Nenhum dispositivo registrado encontrado. Registrando novo dispositivo.');
+    registeredDevices = [{ ...deviceInfo, verified: false, emailSentAt: null }];
+    await setDoc(docRef, { devices: registeredDevices });
+    isNewDevice = true;
+  } else {
+    registeredDevices = docSnap.data().devices || [];
+    const existingDevice = registeredDevices.find(
+      (d) => d.userAgent === deviceInfo.userAgent && d.platform === deviceInfo.platform
+    );
+
+    if (!existingDevice) {
+      console.log('Dispositivo não registrado. Adicionando novo dispositivo.');
+      registeredDevices.push({ ...deviceInfo, verified: false, emailSentAt: null });
+      await updateDoc(docRef, { devices: registeredDevices });
+      isNewDevice = true;
+    }
+  }
+
+  console.log('Dispositivos registrados:', registeredDevices);
+  console.log('Dispositivo atual:', deviceInfo);
+
+  const currentDevice = registeredDevices.find(
+    (d) => d.userAgent === deviceInfo.userAgent && d.platform === deviceInfo.platform
+  );
+
+  // Retorne false se o dispositivo for novo ou não estiver verificado
+  if (isNewDevice || !currentDevice?.verified) {
+    return { isTrustedDevice: false, emailSentAt: currentDevice?.emailSentAt || null };
+  }
+
+  return { isTrustedDevice: true };
 }
+
+async function verifyDevice(user) {
+  await user.reload(); // Atualiza o status do usuário
+  const deviceInfo = getDeviceInfo();
+  const docRef = doc(firestore, 'users', user.uid, 'security', 'deviceInfo');
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists()) {
+    console.error('Nenhum dispositivo registrado encontrado.');
+    return;
+  }
+
+  const registeredDevices = docSnap.data().devices || [];
+  const currentDevice = registeredDevices.find(
+    (d) => d.userAgent === deviceInfo.userAgent && d.platform === deviceInfo.platform
+  );
+
+  if (!currentDevice) {
+    console.error('Dispositivo atual não encontrado na lista de dispositivos registrados.');
+    return;
+  }
+
+  if (!currentDevice.verified) {
+    if (user.emailVerified) {
+      currentDevice.verified = true;
+      await updateDoc(docRef, { devices: registeredDevices });
+      console.log('Dispositivo verificado com sucesso:', currentDevice);
+    } else {
+      console.error('Email do usuário não está verificado. Dispositivo não será marcado como verificado.');
+    }
+  } else {
+    console.log('Dispositivo já está verificado.');
+  }
+}
+
+let lastVerificationEmailSentAt = localStorage.getItem('lastVerificationEmailSentAt')
+  ? parseInt(localStorage.getItem('lastVerificationEmailSentAt'), 10)
+  : null; // Recupera o timestamp do localStorage ou define como null
 
 async function login() {
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('pass').value.trim();
-    const loginMessage = document.getElementById('loginMessage');
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('pass').value.trim();
+  const loginMessage = document.getElementById('loginMessage');
+  const loginButton = document.querySelector('#btnLogin');
 
-    loginMessage.innerHTML = '';
-    loginMessage.style.opacity = 0;
-    loginMessage.style.display = 'none';
+  loginMessage.innerHTML = '';
+  loginMessage.style.opacity = 0;
+  loginMessage.style.display = 'none';
 
-    if (email === '' || password === '') {
-        loginMessage.innerHTML =
-            '<i class="bx bxs-error-circle"></i> Por favor, preencha todos os campos.';
-        loginMessage.className = 'login-message error';
-        loginMessage.style.display = 'block';
+  if (email === '' || password === '') {
+    showMessage(
+      '<i class="bx bxs-error-circle"></i> Preencha todos os campos.',
+      'error',
+    );
+    return;
+  }
 
-        setTimeout(() => {
-            loginMessage.style.opacity = 1;
-        }, 10);
-        return;
-    }
+  loginButton.disabled = true;
 
-    try {
-        const userCredential = await signInWithEmailAndPassword(authInstance, email, password);
-        const user = userCredential.user;
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    await user.reload();
 
-        const settingsRef = doc(firestore, 'users', user.uid, 'security', 'settings');
-        const settingsSnap = await getDoc(settingsRef);
+    const { isTrustedDevice, emailSentAt } = await saveDeviceInfo(user);
 
-        if (settingsSnap.exists() && settingsSnap.data().emailConfirmationEnabled) {
-            const deviceInfo = getDeviceInfo();
-            const docRef = doc(firestore, 'users', user.uid, 'security', 'deviceInfo');
-            const docSnap = await getDoc(docRef);
+    if (!isTrustedDevice) {
+      const now = Date.now();
 
-            if (!docSnap.exists() || JSON.stringify(docSnap.data()) !== JSON.stringify(deviceInfo)) {
-                if (!user.emailVerified) {
-                    await sendEmailVerification(user);
-                    loginMessage.innerHTML =
-                        '<i class="bx bxs-check-circle"></i> Email de confirmação enviado. Verifique seu email.';
-                    loginMessage.className = 'login-message success';
-                    loginMessage.style.display = 'block';
+      if (!emailSentAt || now - emailSentAt >= 10 * 60 * 1000) {
+        console.log('Enviando email de verificação para o usuário...');
+        await sendEmailVerification(user);
 
-                    setTimeout(() => {
-                        loginMessage.style.opacity = 1;
-                    }, 10);
-                    return;
-                } else {
-                    // Save the device info if the email is verified
-                    await setDoc(doc(firestore, 'users', user.uid, 'security', 'deviceInfo'), deviceInfo);
-                }
-            }
+        // Atualize o timestamp de envio no Firestore
+        const docRef = doc(firestore, 'users', user.uid, 'security', 'deviceInfo');
+        const docSnap = await getDoc(docRef);
+        const registeredDevices = docSnap.data().devices || [];
+        const currentDevice = registeredDevices.find(
+          (d) => d.userAgent === getDeviceInfo().userAgent && d.platform === getDeviceInfo().platform
+        );
+
+        if (currentDevice) {
+          currentDevice.emailSentAt = now;
+          await updateDoc(docRef, { devices: registeredDevices });
         }
 
-        // Load the email confirmation setting and update the checkbox if it exists
-        const emailConfirmationCheckbox = document.getElementById('email-confirmation');
-        if (emailConfirmationCheckbox && settingsSnap.exists()) {
-            const emailConfirmationEnabled = settingsSnap.data().emailConfirmationEnabled;
-            emailConfirmationCheckbox.checked = emailConfirmationEnabled;
-        }
-
-        loginMessage.innerHTML =
-            '<i class="bx bxs-check-circle"></i> Login bem-sucedido!';
-        loginMessage.className = 'login-message success';
-        loginMessage.style.display = 'block';
-
-        setTimeout(() => {
-            loginMessage.style.opacity = 1;
-        }, 10);
-        setTimeout(() => {
-            window.location.href = 'menuPrincipal.html';
-        }, 2000);
-    } catch (error) {
-        const errorMessage = error.message;
-        loginMessage.innerHTML =
-            '<i class="bx bxs-error-circle"></i> Erro de autenticação: ' +
-            errorMessage;
-        loginMessage.className = 'login-message error';
-        loginMessage.style.display = 'block';
-
-        setTimeout(() => {
-            loginMessage.style.opacity = 1;
-        }, 10);
+        showMessage(
+          '<i class="bx bxs-check-circle"></i> Email de verificação enviado. Verifique seu email para confirmar o dispositivo.',
+          'success',
+        );
+      } else {
+        showMessage(
+          '<i class="bx bxs-error-circle"></i> Aguarde antes de solicitar outro email de verificação.',
+          'error',
+        );
+      }
+      loginButton.disabled = false;
+      return;
     }
+
+    if (!user.emailVerified) {
+      showMessage(
+        '<i class="bx bxs-error-circle"></i> Verifique seu email antes de continuar.',
+        'error',
+      );
+      loginButton.disabled = false;
+      return;
+    }
+
+    showMessage('<i class="bx bxs-check-circle"></i> Login bem-sucedido!', 'success');
+    setTimeout(() => (window.location.href = 'menuPrincipal.html'), 2000);
+  } catch (error) {
+    showMessage(`<i class="bx bxs-error-circle"></i> Erro: ${error.message}`, 'error');
+  } finally {
+    loginButton.disabled = false;
+  }
 }
 
-document.querySelector('#btnLogin').addEventListener('click', login);
+function showMessage(message, type) {
+  const loginMessage = document.getElementById('loginMessage')
+  loginMessage.innerHTML = message
+  loginMessage.className = `login-message ${type}`
+  loginMessage.style.display = 'block'
+  setTimeout(() => (loginMessage.style.opacity = 1), 10)
+}
+
+document.querySelector('#btnLogin').addEventListener('click', login)
 
 document.getElementById('logout').addEventListener('click', async () => {
-    try {
-        await signOut(authInstance);
-        console.log('User signed out.');
-        window.location.href = 'index.html';
-    } catch (error) {
-        console.error('Sign out error:', error);
-    }
-});
+  try {
+    await signOut(authInstance)
+    console.log('User signed out.')
+    window.location.href = 'index.html'
+  } catch (error) {
+    console.error('Sign out error:', error)
+  }
+})

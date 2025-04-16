@@ -244,10 +244,11 @@
             <h2 class="section__title">Segurança</h2>
             <div class="security-container">
                 <div class="security-option">
-                    <div class="check-option">
+                    <label class="toggle-switch">
                         <input type="checkbox" id="email-confirmation">
-                        <label for="email-confirmation" style="font-size: 16px">Ativar confirmação por email</label>
-                    </div>
+                        <span class="slider"></span>
+                    </label>
+                    <span style="font-size: 16px; margin-left: 10px;">Ativar confirmação por email</span>
                 </div>
                 <button type="button" class="loginBtn" onclick="saveSecuritySettings()">Salvar Configurações</button>
                 <div id="securityMessage" class="security-message"></div>
@@ -333,10 +334,10 @@
     <script type="module" src="js/firebase.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/showProfile.js"></script>
+    <script type="module" src="js/security.js"></script>
     <script type="module" src="js/authLogin.js"></script>
     <script type="module" src="js/editProfile.js"></script>
     <script type="module" src="js/togglePass.js"></script>
-    <script type="module" src="js/security.js"></script>
 </body>
 
 </html>

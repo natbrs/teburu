@@ -13,7 +13,19 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-android-permissions": {},
-      "cordova-plugin-firebasex": {},
+      "cordova-plugin-firebasex": {
+        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+        "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+        "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+        "FIREBASE_FCM_AUTOINIT_ENABLED": "true",
+        "FIREBASE_ANALYTICS_WITHOUT_ADS": "false",
+        "FIREBASE_MESSAGING_IMMEDIATE_PAYLOAD_DELIVERY": "false",
+        "GOOGLE_ANALYTICS_ADID_COLLECTION_ENABLED": "true",
+        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE": "true",
+        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE": "true",
+        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA": "true",
+        "GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS": "true"
+      },
       "cordova-plugin-toast": {},
       "cordova-plugin-device": {}
     },
@@ -22,24 +34,29 @@
     ]
   },
   "dependencies": {
+    "cordova": "^12.0.0",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-basic-auth": "^1.2.1",
-    "firebase": "^11.0.2",
+    "firebase": "^11.5.0",
     "firebase-admin": "^13.2.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
-    "moment": "^2.29.4",
+    "moment": "^2.30.1",
     "nodemailer": "^6.10.0",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
-    "concurrently": "^7.6.0",
+    "concurrently": "^9.1.2",
     "cordova-browser": "^7.0.0",
-    "eslint": "^9.20.1",
+    "cordova-plugin-android-permissions": "^1.1.5",
+    "cordova-plugin-device": "^3.0.0",
+    "cordova-plugin-firebasex": "^18.0.6",
+    "cordova-plugin-toast": "^1.0.1",
+    "eslint": "^9.23.0",
     "nodemon": "^3.1.9"
   }
 }

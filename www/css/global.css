@@ -1,5 +1,7 @@
 /* Mensagens de Login e Editar*/
-.login-message, .edit-message, .security-message {
+.login-message,
+.edit-message,
+.security-message {
   width: 100%;
   padding: 15px;
   border-radius: 10px;
@@ -35,12 +37,16 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.login-message.success, .edit-message.success, .security-message.success {
+.login-message.success,
+.edit-message.success,
+.security-message.success {
   background-color: rgba(72, 187, 120, 0.8);
   color: white;
 }
 
-.login-message.error, .edit-message.error, .security-message.error {
+.login-message.error,
+.edit-message.error,
+.security-message.error {
   background-color: rgba(255, 87, 87, 0.8);
   color: white;
 }
@@ -95,4 +101,49 @@
   top: 50%;
   left: 10.5px;
   transform: translate(-50%, -50%);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 25px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgb(148, 92, 74);
+}
+
+input:checked + .slider:before {
+  transform: translateX(25px);
 }
